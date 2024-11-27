@@ -1,0 +1,8 @@
+<video #video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+  <source src="assets/vader.mp4" type="video/mp4">
+</video>
+@if (isPaused) {
+  <button (click)="toggleVideo(video)">PLAY</button>
+} @else {
+  <button (click)="toggleVideo(video)">PAUSE</button>
+}

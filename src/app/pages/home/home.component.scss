@@ -1,0 +1,13 @@
+:host {
+  video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top left;
+  }
+  button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+}
