@@ -1,1 +1,55 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+$light-grey: #c0c0c0;
+
+:root {
+  @include mat.button-toggle-overrides((
+    text-color: black,
+    selected-state-text-color: white
+  ));
+  @include mat.checkbox-overrides((
+    unselected-icon-color: white,
+    label-text-color: white,
+    unselected-hover-icon-color: $light-grey
+  ));
+}
+
+@mixin fullscreen {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+@mixin fullscreen-bg {
+  @include fullscreen;
+  transition: background-image 0.5s ease-in-out;
+
+  &.dark {
+    background: url('/assets/vader.PNG');
+    background-size: cover;
+  }
+
+  &.light {
+    background: url('/assets/tiefighter.PNG');
+    background-size: cover;
+  }
+
+}
+@mixin fullscreen-bg-flex {
+  @include fullscreen-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin aero {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

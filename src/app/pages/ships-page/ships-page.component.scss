@@ -1,0 +1,69 @@
+@use '@angular/material' as mat;
+@use 'styles' as *;
+
+:host {
+  main {
+    @include fullscreen-bg;
+    padding-top: 20rem;
+    text-align: center;
+
+    &.dark {
+      color: white;
+    }
+    &.light {
+      color: black;
+      @include mat.checkbox-overrides((
+        unselected-icon-color: black,
+        label-text-color: black,
+        unselected-hover-icon-color: $light-grey
+      ));
+    }
+
+    .form-container, .checkbox-container {
+      width: 100%;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+
+      mat-form-field {
+        width: 30rem;
+      }
+    }
+
+    .container {
+      width: 90%;
+      max-height: 75%;
+      overflow-y: auto;
+      margin: 0 auto;
+      overflow-x: auto;
+
+      table {
+        width: 90%;
+        table-layout: fixed;
+        border-collapse: collapse;
+
+        tr, td, th {
+          border-bottom: none;
+          border-top: none;
+        }
+
+        tr {
+          &:nth-child(even) {
+            background-color: $light-grey;
+          }
+
+          th {
+            background-color: black;
+            color: white;
+          }
+
+          td {
+            text-align: left;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+          }
+        }
+      }
+    }
+  }
+}

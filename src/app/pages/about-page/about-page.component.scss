@@ -1,0 +1,19 @@
+@use 'styles' as *;
+
+:host {
+  main {
+    @include fullscreen-bg-flex;
+    background-size: cover;
+    align-items: center;
+
+    .blurb {
+      @include aero;
+      max-width: 50%;
+      max-height: 75%;
+      overflow: auto;
+      height: auto;
+      font-size: 2rem;
+      padding: 1rem;
+    }
+  }
+}

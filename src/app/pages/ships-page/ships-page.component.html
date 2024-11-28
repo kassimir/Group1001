@@ -1,1 +1,37 @@
-<p>ships-page works!</p>
+<main [ngClass]="theme | async">
+  <div class="form-container">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter By Manufacturer</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Number"
+             matInput
+             [(ngModel)]="autoCompleteControl"
+             [matAutocomplete]="auto"
+      />
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      @for(manufacturer of (manufacturerAutoComplete | async); track manufacturer) {
+        <mat-option [value]="manufacturer">{{ manufacturer }}</mat-option>
+      }
+    </mat-autocomplete>
+  </div>
+  <h2>Add/Remove Columns</h2>
+  <div class="checkbox-container">
+    @for(cx of optionalColumnNames; track $index) {
+    <mat-checkbox [ngModel]="optionalColumnVals[$index]" (ngModelChange)="onCheck($index, $event)">{{ cx | tableHeader }}</mat-checkbox>
+    }
+  </div>
+  <div class="container">
+    <table mat-table [dataSource]="filteredShips" class="mat-elevation-z8">
+      @for(column of displayedColumns; track column) {
+        <ng-container [matColumnDef]="column">
+          <th mat-header-cell *matHeaderCellDef> {{ column | tableHeader }} </th>
+          <td mat-cell *matCellDef="let element"> {{ element[column] }} </td>
+        </ng-container>
+      }
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</main>

@@ -5,9 +5,25 @@
     object-fit: cover;
     object-position: top left;
   }
-  button {
+  .container {
     position: absolute;
     bottom: 20px;
     left: 20px;
+    display: flex;
+
+    .pause {
+      width: 0.5rem;
+      height: 2rem;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin-right: .5rem;
+    }
+
+    .play {
+      width: 0;
+      height: 0;
+      border-left: 1.5rem solid rgba(255, 255, 255, 0.5);
+      border-top: 1rem solid transparent;
+      border-bottom: 1rem solid transparent;
+    }
   }
 }

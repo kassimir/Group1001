@@ -1,0 +1,13 @@
+@if (!initClick) {
+  <header>
+    <div class="info">CLICK ANYWHERE ON THE SCREEN FOR THE MENU</div>
+  </header>
+}
+
+@if (menuVisible) {
+  <div class="menu" [ngStyle]="menuStyle">
+    @for(item of menuItems; track item.route) {
+      <div class="menu-item" (click)="navigate(item.route)">{{item.text}}</div>
+    }
+  </div>
+}
